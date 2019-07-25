@@ -5,20 +5,19 @@ namespace CalculatorProject {
         static void Main(string[] args) {
             decimal firstValue = 0m;
             decimal secondValue = 0m;
-            char operation;
-            Console.WriteLine("Insert a number and press enter to begin calculator..."); 
+            Console.WriteLine("Insert a number and press enter to begin calculator...");
             firstValue = Convert.ToDecimal(Console.ReadLine());
             Console.Clear();
             Console.WriteLine($"Your first value was {firstValue} {Environment.NewLine}" +
                 $"Please enter a second value then press enter to continue...");
             secondValue = Convert.ToDecimal(Console.ReadLine());
             Console.Clear();
-            Console.WriteLine($"Your two values are {firstValue} and {secondValue}{Environment.NewLine}Press enter to continue...");
-            Console.Read();
-            Console.Clear();
             Console.WriteLine($"Enter the Key relating to the Operation you want to perform:{Environment.NewLine}" +
-                $"[A]dd, S[ubtract], [M]ultiply, [D]ivide");
-            Operation instance = new Operation(Console.ReadLine(), firstValue, secondValue);
+                $"[A]dd, S[ubtract], [M]ultiply, [D]ivide{Environment.NewLine}Press enter to run operation");
+            string operatorTest = Console.ReadLine();
+            Console.Clear();
+            decimal result = Operation.action(firstValue, secondValue, operatorTest);
+            Console.WriteLine($"The result of your operation is {result}");
         }
     }
     class Operation {
@@ -26,16 +25,10 @@ namespace CalculatorProject {
         public decimal firstDecimal { get; set; }
         public decimal secondDecimal { get; set; }
 
-        public Operation (string operation, decimal value1, decimal value2) {
-            this.operationKey = operation;
-            this.firstDecimal = value1;
-            this.secondDecimal = value2;
+        public Operation() {
         }
 
-        public decimal action (decimal value1, decimal value2, string operation) {
-            value1 = this.firstDecimal;
-            value2 = this.secondDecimal;
-            operation = this.operationKey;
+        public static decimal action(decimal value1, decimal value2, string operation) {
             string operationUpper = operation.ToUpper();
             char operationChar = operationUpper[0];
             decimal final = 0m;
