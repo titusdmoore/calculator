@@ -6,7 +6,7 @@ namespace CalculatorProject {
             decimal firstValue = 0m;
             decimal secondValue = 0m;
             char operation;
-            Console.WriteLine("Insert a number and press enter to begin calculator...");
+            Console.WriteLine("Insert a number and press enter to begin calculator..."); 
             firstValue = Convert.ToDecimal(Console.ReadLine());
             Console.Clear();
             Console.WriteLine($"Your first value was {firstValue} {Environment.NewLine}" +
