@@ -16,18 +16,49 @@ namespace CalculatorProject {
             Console.WriteLine($"Your two values are {firstValue} and {secondValue}{Environment.NewLine}Press enter to continue...");
             Console.Read();
             Console.Clear();
-            Console.WriteLine($"Enter the Key relation to the Operation you want to perform:{Environment.NewLine}" +
+            Console.WriteLine($"Enter the Key relating to the Operation you want to perform:{Environment.NewLine}" +
                 $"[A]dd, S[ubtract], [M]ultiply, [D]ivide");
-
+            Operation instance = new Operation(Console.ReadLine(), firstValue, secondValue);
         }
     }
     class Operation {
-        public char operationKey { get; set; }
-        public decimal numberOne { get; set; }
-        public decimal numberTwo { get; set; }
+        public string operationKey { get; set; }
+        public decimal firstDecimal { get; set; }
+        public decimal secondDecimal { get; set; }
 
-        public decimal beginOperation (char operation, decimal NumberOne, decimal NumberTwo) {
-            return 0m;
+        public Operation (string operation, decimal value1, decimal value2) {
+            this.operationKey = operation;
+            this.firstDecimal = value1;
+            this.secondDecimal = value2;
+        }
+
+        public decimal action (decimal value1, decimal value2, string operation) {
+            value1 = this.firstDecimal;
+            value2 = this.secondDecimal;
+            operation = this.operationKey;
+            string operationUpper = operation.ToUpper();
+            char operationChar = operationUpper[0];
+            decimal final = 0m;
+
+            switch (operationChar) {
+                case 'A':
+                    final = value1 + value2;
+                    break;
+                case 'S':
+                    final = value1 - value2;
+                    break;
+                case 'M':
+                    final = value1 * value2;
+                    break;
+                case 'D':
+                    final = value1 / value2;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Operation");
+                    break;
+            }
+
+            return final;
         }
     }
 }
