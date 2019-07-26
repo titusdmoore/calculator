@@ -13,8 +13,8 @@ namespace CalculatorProject {
             secondValue = Convert.ToDecimal(Console.ReadLine());
             Console.Clear();
             Console.WriteLine($"Enter the Key relating to the Operation you want to perform:{Environment.NewLine}" +
-                $"[A]dd, S[ubtract], [M]ultiply, [D]ivide{Environment.NewLine}Press enter to run operation");
-            string operatorTest = Console.ReadLine();
+                $"[A]dd, [S]ubtract, [M]ultiply, [D]ivide{Environment.NewLine}Press enter to run operation");
+            string operatorTest = Convert.ToString(Console.ReadKey());
             Console.Clear();
             decimal result = Operation.action(firstValue, secondValue, operatorTest);
             Console.WriteLine($"The result of your operation is {result}");
